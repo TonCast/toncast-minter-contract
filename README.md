@@ -211,4 +211,4 @@ Enhanced for TonCast by TonCast.me team.
 MIT - See [LICENSE](LICENSE) file for details.
 
 Copyright (c) 2022 DeFi.org  
-Copyright (c) 2024 TonCast.me
+Copyright (c) 2025 TonCast.me
