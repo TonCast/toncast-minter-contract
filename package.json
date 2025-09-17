@@ -1,17 +1,17 @@
 {
-  "name": "@ton-defi.org/jetton-deployer-contracts",
-  "description": "Javascript library for deploying Jettons on the TON blockchain",
-  "version": "0.0.2",
+  "name": "@toncast/minter-contract",
+  "description": "TonCast Jetton minter contract with Tonkeeper deployment support",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "ton-defi.org",
+  "author": "TonCast.me",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ton-defi-org/jetton-deployer-contracts.git"
+    "url": "git+https://github.com/TonCast/toncast-minter-contract.git"
   },
   "bugs": {
-    "url": "https://github.com/ton-defi-org/jetton-deployer-contracts/issues"
+    "url": "https://github.com/TonCast/toncast-minter-contract/issues"
   },
-  "homepage": "https://github.com/ton-defi-org/jetton-deployer-contracts#readme",
+  "homepage": "https://github.com/TonCast/toncast-minter-contract#readme",
   "scripts": {
     "prettier": "npx prettier --write '{test,contracts,build}/**/*.{ts,js,json}'",
     "test": "mocha  --exit test/**/*.spec.ts",
@@ -20,6 +20,9 @@
     "build": "ts-node ./build/_build.ts",
     "deploy": "ts-node ./build/_deploy.ts",
     "deploy:testnet": "ts-node ./build/_deploy.ts",
+    "link:tonkeeper": "ts-node ./build/tonkeeper-link.ts",
+    "mint:generate": "ts-node ./build/generate-mint-tx.ts",
+    "revoke:admin": "ts-node ./build/generate-revoke-admin.ts",
     "postinstall": "ts-node ./build/_setup.ts"
   },
   "devDependencies": {

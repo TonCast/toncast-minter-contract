@@ -1,8 +1,10 @@
-# Jetton Deployer - Contracts
+# TonCast Minter Contract
 
-> Starter template for a [Jetton](https://github.com/ton-blockchain/TIPs/issues/74) project
+> Jetton minter contract for TonCast with Tonkeeper deployment support
 
-This project contains everything you need to deploy a new token (Jetton contract) to TON blockchain. This project is free and open source and was created for educational purposes.
+This project is a fork of [jetton-deployer-contracts](https://github.com/ton-defi-org/jetton-deployer-contracts) with enhanced features for easy deployment via Tonkeeper. It includes automatic minting, admin revocation, and streamlined deployment process.
+
+**📖 Quick Start**: See [QUICKSTART.md](QUICKSTART.md) for a 3-minute deployment guide.
 
 &nbsp;
 ## Option 1: Deploy a standard Jetton using your browser
@@ -30,11 +32,13 @@ This is by far the simpler option if you want to use the standard Jetton code. Y
 
 This is much more complicated and will allow you to change the actual behavior of the Jetton to any custom behavior you want to program with the [FunC](https://ton.org/docs/#/func) language. For example, let's say you want a special Jetton that pays a 1% fee to some address every time it's transferred between users. Since this behavior is different from the standard, for this option you will need to install the FunC compiler on your machine.
 
-> Note: This project is based on the [tonstarter-contracts](https://github.com/ton-defi-org/tonstarter-contracts) repo, consult it if you need more help.
+> Note: This project is based on [jetton-deployer-contracts](https://github.com/ton-defi-org/jetton-deployer-contracts) and [tonstarter-contracts](https://github.com/ton-defi-org/tonstarter-contracts) repos.
 
 #### Instructions:
 
 1. Make sure you have all "Dependencies and Requirements" as described in [tonstarter-contracts](https://github.com/ton-defi-org/tonstarter-contracts/#dependencies-and-requirements) repo.
+
+   > **Optional**: You can place `fift` and `func` binaries in a `bin/` directory at the project root. The build script will automatically use them if present.
 
 2. Git clone the repo locally and rename the directory to your own project name.
 
@@ -50,9 +54,24 @@ This is much more complicated and will allow you to change the actual behavior o
 
 8. Edit your token metadata (like name and ticker) in `jettonParams` in `build/jetton-minter.deploy.ts`
 
-9. Prepare at least 0.25 TON for deployment fees.
+9. Prepare at least 0.5 TON for deployment fees (includes deployment + initial mint + wallet creation).
 
-10. To deploy the token, run in the root repo dir `npm run deploy` and follow the on-screen instructions.
+10. To deploy the token using Tonkeeper:
+    - Run `npm run link:tonkeeper` to generate a Tonkeeper deeplink
+    - The deployment will automatically mint 20,000,000 tokens to the owner address
+    - Click the generated link or scan the QR code in Tonkeeper
+
+11. Alternatively, deploy manually by running `npm run deploy` and follow the on-screen instructions.
+
+&nbsp;
+## Available NPM Scripts
+
+* `npm run build` - Compile FunC contracts to Fift and generate compiled JSON files
+* `npm run test` - Run unit tests for the contracts
+* `npm run deploy` - Interactive deployment script with wallet connection
+* `npm run link:tonkeeper` - Generate Tonkeeper deeplink for deployment (deploys contract + mints 20M tokens)
+* `npm run mint:generate` - Generate a separate mint transaction link (for minting after deployment)
+* `npm run revoke:admin` - Generate link to revoke admin rights (IRREVERSIBLE - disables minting forever)
 
 &nbsp;
 ## Jetton metadata field best practices
@@ -118,11 +137,11 @@ Yes! Contract deployers that look like this are the safest you can get. This is 
     
 3. *How can I check that you're actually using the standard Jetton smart contract code in this deployer?*
 
-    This deployer is open source so you can compare the code yourself. The standard Jetton code is [here](https://github.com/ton-blockchain/token-contract/tree/main/ft) - notice the TON blockchain repo. The code in this deployer is [here](https://github.com/ton-defi-org/jetton-deployer-contracts/tree/main/contracts).
+    This deployer is open source so you can compare the code yourself. The standard Jetton code is [here](https://github.com/ton-blockchain/token-contract/tree/main/ft) - notice the TON blockchain repo. The code in this deployer is [here](https://github.com/TonCast/toncast-minter-contract/tree/main/contracts).
     
 4. *I'm using the HTML form to deploy from my browser, how can I be sure it's deploying the contract source code in the repo?*
 
-    The HTML form is also open source, you can see the compiled smart contract bytecode that it is deploying [here](https://github.com/ton-defi-org/jetton-deployer-webclient/tree/main/src/lib/contracts). You can build the FunC source code by yourself by cloning the [contract repo](https://github.com/ton-defi-org/jetton-deployer-contracts) and building it by running `npm install` and then `npm run build`. Then compare the build output in the `/build` directory.
+    The HTML form is also open source, you can see the compiled smart contract bytecode that it is deploying [here](https://github.com/ton-defi-org/jetton-deployer-webclient/tree/main/src/lib/contracts). You can build the FunC source code by yourself by cloning the [contract repo](https://github.com/TonCast/toncast-minter-contract) and building it by running `npm install` and then `npm run build`. Then compare the build output in the `/build` directory.
     
 5. *How can I be sure that the website I visit in my browser is actually serving the HTML source code in the repo?*
 
@@ -168,5 +187,28 @@ Yes! Contract deployers that look like this are the safest you can get. This is 
     We have a friendly community on Telegram that will be happy to help you. Visit https://t.me/ton_minter and ask for help.
 
 &nbsp;
+## Features
+
+This fork includes several enhancements over the original:
+
+* **Tonkeeper Integration**: Direct deployment via Tonkeeper deeplinks
+* **Automatic Minting**: Deploy and mint 20M tokens in a single transaction
+* **Admin Revocation**: Easy-to-use script for revoking admin rights
+* **Local Binaries Support**: Option to use local `fift` and `func` binaries
+* **Enhanced Documentation**: Quick start guide and detailed instructions
+
+&nbsp;
+## Credits
+
+This project is based on:
+- [jetton-deployer-contracts](https://github.com/ton-defi-org/jetton-deployer-contracts) by DeFi.org
+- [tonstarter-contracts](https://github.com/ton-defi-org/tonstarter-contracts) by DeFi.org
+
+Enhanced for TonCast by TonCast.me team.
+
+&nbsp;
 # License
-MIT
+MIT - See [LICENSE](LICENSE) file for details.
+
+Copyright (c) 2022 DeFi.org  
+Copyright (c) 2024 TonCast.me
