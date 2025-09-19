@@ -25,11 +25,11 @@ const SNAKE_PREFIX = 0x00;
 // - Data is stored on-chain (except for the image data itself)
 // - Owner should usually be the deploying wallet's address.
 const jettonParams = {
-  owner: Address.parse("EQCQMcvQkJaukQkocQUG2dnTAk-s2_WzAx8JOnxI7LKDKdm8"),
-  name: "TonCast-1",
-  symbol: "TCAST1",
+  owner: Address.parse("UQAGMtB6GfL6ORhXf7gwlPsYX88FQin2_ycVXMNgu4A8eg44"),
+  name: "Toncast",
+  symbol: "TCAST",
   image: "https://test.toncast.me/toncast-testnet.png?v=1", // Image url
-  description: "TonCast jetton testnet 1.0",
+  description: "Toncast jetton",
 };
 
 export type JettonMetaDataKeys = "name" | "description" | "image" | "symbol";

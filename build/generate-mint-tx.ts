@@ -1,6 +1,7 @@
 // Script to generate mint transaction for already deployed jetton minter
 import { Cell, beginCell, Address, toNano } from "ton";
 import { getNewMinterAddress } from "./jetton-minter.deploy";
+import BN from "bn.js";
 
 // Operation codes
 const op = {
@@ -10,8 +11,8 @@ const op = {
 
 function createMintMessage(
   to: Address,
-  jettonAmount: bigint,
-  masterAmount: bigint
+  jettonAmount: BN,
+  masterAmount: BN
 ): Cell {
   // Create internal_transfer message that will be sent to wallet
   const internalTransfer = beginCell()
@@ -38,7 +39,7 @@ function createMintMessage(
 
 async function main() {
   const minterAddress = getNewMinterAddress();
-  const ownerAddress = Address.parse("EQBM0jlIe1_IGNJmHxV3EYDAswxLQhIxZnzvResvWbtPTJuf");
+  const ownerAddress = Address.parse("UQAGMtB6GfL6ORhXf7gwlPsYX88FQin2_ycVXMNgu4A8eg44");
   
   console.log("\n=== MINT TRANSACTION GENERATOR ===");
   console.log("Minter Address:", minterAddress.toFriendly());
