@@ -59,11 +59,11 @@ async function main() {
   const amount = toNano(0.05); // Only need fees for this transaction
   
   const tonkeeperLink = `ton://transfer/${minterAddress.toFriendly({ bounceable: false })}?amount=${amount}&bin=${bodyBase64Url}`;
-  const httpsLink = `https://tonkeeper.com/transfer/${minterAddress.toFriendly({ bounceable: false })}?amount=${amount}&bin=${bodyBase64Url}`;
+  // const httpsLink = `https://tonkeeper.com/transfer/${minterAddress.toFriendly({ bounceable: false })}?amount=${amount}&bin=${bodyBase64Url}`;
   
   console.log("\n=== TONKEEPER LINKS ===");
   console.log("Deeplink:", tonkeeperLink);
-  console.log("\nHTTPS:", httpsLink);
+  // console.log("\nHTTPS:", httpsLink);
   
   console.log("\n=== FINAL WARNING ===");
   console.log("🚨 This will PERMANENTLY remove your ability to:");

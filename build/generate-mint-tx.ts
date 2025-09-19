@@ -1,7 +1,6 @@
 // Script to generate mint transaction for already deployed jetton minter
 import { Cell, beginCell, Address, toNano } from "ton";
 import { getNewMinterAddress } from "./jetton-minter.deploy";
-import BN from "bn.js";
 
 // Operation codes
 const op = {
@@ -11,8 +10,8 @@ const op = {
 
 function createMintMessage(
   to: Address,
-  jettonAmount: BN,
-  masterAmount: BN
+  jettonAmount: bigint,
+  masterAmount: bigint
 ): Cell {
   // Create internal_transfer message that will be sent to wallet
   const internalTransfer = beginCell()
@@ -67,10 +66,10 @@ async function main() {
   
   const amount = toNano(0.25);
   const tonkeeperLink = `ton://transfer/${minterAddress.toFriendly({ bounceable: false })}?amount=${amount}&bin=${bodyBase64Url}`;
-  const httpsLink = `https://tonkeeper.com/transfer/${minterAddress.toFriendly({ bounceable: false })}?amount=${amount}&bin=${bodyBase64Url}`;
+  // const httpsLink = `https://tonkeeper.com/transfer/${minterAddress.toFriendly({ bounceable: false })}?amount=${amount}&bin=${bodyBase64Url}`;
   
   console.log("Deeplink:", tonkeeperLink);
-  console.log("\nHTTPS:", httpsLink);
+  // console.log("\nHTTPS:", httpsLink);
   
   console.log("\n=== IMPORTANT ===");
   console.log("1. First deploy the contract using the deployment link");

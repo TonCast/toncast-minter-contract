@@ -21,11 +21,11 @@ async function main() {
   try {
     const opts = parseArgs(process.argv);
     const address = getNewMinterAddress();
-    const https = getTonkeeperHttpsLink({ comment: opts.comment ?? "Deploy + mint 20M", bounceable: opts.bounceable, amountNano: opts.amount });
+    // const https = getTonkeeperHttpsLink({ comment: opts.comment ?? "Deploy + mint 20M", bounceable: opts.bounceable, amountNano: opts.amount });
     const deeplink = getTonkeeperDeeplink({ comment: opts.comment ?? "Deploy + mint 20M", bounceable: opts.bounceable, amountNano: opts.amount });
 
     console.log("Address:", address.toFriendly({ bounceable: opts.bounceable ?? false }));
-    console.log("HTTPS:", https);
+    // console.log("HTTPS:", https);
     console.log("Deeplink:", deeplink);
     process.exit(0);
   } catch (err: any) {

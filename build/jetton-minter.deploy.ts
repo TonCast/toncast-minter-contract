@@ -28,8 +28,8 @@ const jettonParams = {
   owner: Address.parse("UQAGMtB6GfL6ORhXf7gwlPsYX88FQin2_ycVXMNgu4A8eg44"),
   name: "Toncast",
   symbol: "TCAST",
-  image: "https://test.toncast.me/toncast-testnet.png?v=1", // Image url
-  description: "Toncast jetton",
+  image: "https://raw.githubusercontent.com/TonCast/toncast-minter-contract/refs/heads/main/toncast_logo.png", // Image url
+  description: "TCAST is the utility token of Toncast, a prediction market, where revenue is distributed through the DAO to TCAST stakers.",
 };
 
 export type JettonMetaDataKeys = "name" | "description" | "image" | "symbol";
